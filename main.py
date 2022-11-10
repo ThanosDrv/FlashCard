@@ -1,10 +1,11 @@
 import random
+from queue import Queue
 
+front =[]
+back = []
 decks = []
 card_front = []
 card_back = []
-front = []
-back = []
 def new_deck():
     name = input("Name the deck you want to create: ")
     decks.append(name)
@@ -13,12 +14,13 @@ def new_deck():
     card_back.append(back)
 
 
-def add_card():
+def add_card(i):
     frontCard = input("Enter the text on the front of the card: ")
-    front.append(frontCard)
+    card_front[i].append(frontCard)
     backCard = input("Enter the text on the back of the card: ")
-    back.append(backCard)
+    card_back[i].append(backCard)
     print("a card has been added to the deck.")
+    print(card_front[i][0], card_back[i][0])
 
 
 flag = True
@@ -48,7 +50,7 @@ while flag:
             print("Add new card (add), Delete card (delete)")
             command = input()
             if command == "add":
-                add_card()
+                add_card(target)
         elif command == "view":
-            print("front", front)
-            print("back", back)
+            print("front", card_front)
+            print("back", card_back)
